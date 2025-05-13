@@ -61,32 +61,6 @@ resource "aws_vpc" "example" {
 - For module and variable documentation, consider using description arguments instead of comments
 
 
-# Public subnet where our EC2 instance will reside
-resource "aws_subnet" "public" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "${var.aws_region}a"  # Using the first AZ in the region
-  
-  tags = {
-    Name = "public-subnet"
-  }
-}
-
-/* 
-  EC2 instance for the web server
-  Using a t2.micro to stay within free tier limits
-*/
-resource "aws_instance" "web" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = aws_subnet.public.id
-  
-  // Adding a name tag for easy identification
-  tags = {
-    Name = "web-server"
-  }
-}
-```
 
 ## Terraform Documentation
 
