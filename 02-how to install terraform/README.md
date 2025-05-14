@@ -52,7 +52,7 @@ Before you begin, ensure you have the following:
 
 ### Manual Installation <a name="windows-manual"></a>
 
-1. Download the latest Terraform ZIP file for Windows from the [official Terraform website](https://developer.hashicorp.com/terraform/downloads)
+1. Download the latest Terraform ZIP file for Windows from the [official Terraform website](https://developer.hashicorp.com/terraform/install#windows)
 
 2. Create a new folder named "binaries" on your system
 
