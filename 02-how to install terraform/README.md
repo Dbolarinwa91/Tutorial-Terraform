@@ -119,7 +119,7 @@ for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURIT
 
 ### Installing Terraform on Windows
 
-1. Download the latest Terraform ZIP file for Windows from the [official Terraform website](https://developer.hashicorp.com/terraform/downloads)
+1. Download the latest Terraform ZIP file for Windows from the [official Terraform website](https://developer.hashicorp.com/terraform/install#windows)
 
 2. Create a new folder named "binaries" on your system
 
