@@ -4,6 +4,7 @@
 - [What is Terraform?](#what-is-terraform)
 - [Terraform Configuration Files](#terraform-configuration-files)
 - [Benefits](#benefits)
+- [Official Documentation](#official-documentation)
 
 ## What is Terraform?
 
@@ -46,3 +47,12 @@ Implementing Terraform in your organization provides several advantages:
 - **Improve infrastructure consistency** across environments
 - **Eliminate configuration drift** through state management
 - **Provide a single workflow** across multiple platforms
+
+## Official Documentation
+
+For comprehensive information and guides on using Terraform, refer to:
+
+- **Main Documentation**: [https://developer.hashicorp.com/terraform/docs](https://developer.hashicorp.com/terraform/docs)
+- **Provider Registry**: [https://registry.terraform.io/](https://registry.terraform.io/)
+- **Installation Guide**: [https://developer.hashicorp.com/terraform/install](https://developer.hashicorp.com/terraform/install)
+- **Introduction & Concepts**: [https://developer.hashicorp.com/terraform/intro](https://developer.hashicorp.com/terraform/intro)
