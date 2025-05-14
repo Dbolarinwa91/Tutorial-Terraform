@@ -1,35 +1,29 @@
-# Terraform & AWS CLI Installation Guide
+# Terraform Installation Guide
 
-This guide provides step-by-step instructions for installing Terraform and AWS CLI on different operating systems (macOS, Windows, and Linux). Follow the instructions specific to your operating system to set up your development environment for working with Terraform and AWS.
+This guide provides step-by-step instructions for installing Terraform on different operating systems (macOS, Windows, and Linux). Follow the instructions specific to your operating system to set up your development environment for working with Terraform.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
-- [macOS Installation](#macos-installation)
-  - [Installing Terraform on macOS](#installing-terraform-on-macos)
-  - [Installing VS Code and Terraform Plugin](#installing-vs-code-and-terraform-plugin)
-  - [Installing AWS CLI on macOS](#installing-aws-cli-on-macos)
-  - [Configuring AWS Credentials on macOS](#configuring-aws-credentials-on-macos)
-- [Windows Installation](#windows-installation)
-  - [Installing Terraform on Windows](#installing-terraform-on-windows)
-  - [Installing Terraform using Chocolatey](#installing-terraform-using-chocolatey)
-  - [Installing AWS CLI on Windows](#installing-aws-cli-on-windows)
-- [Linux Installation](#linux-installation)
-  - [Installing Terraform on Ubuntu](#installing-terraform-on-ubuntu)
-  - [Installing Terraform on RHEL](#installing-terraform-on-rhel)
-  - [Installing AWS CLI on Linux](#installing-aws-cli-on-linux)
+- [macOS Installation](#macos)
+- [Windows Installation](#windows)
+  - [Manual Installation](#windows-manual)
+  - [Chocolatey Installation](#windows-chocolatey)
+- [Linux Installation](#linux)
+  - [Ubuntu Installation](#linux-ubuntu)
+  - [RHEL Installation](#linux-rhel)
+- [Verifying Installation](#verify)
+- [Uninstalling Terraform](#uninstall)
+- [Recommended Tools](#recommended-tools)
 - [Troubleshooting](#troubleshooting)
 
-## Prerequisites
+## Prerequisites <a name="prerequisites"></a>
 
 Before you begin, ensure you have the following:
 
 - Administrator/sudo access to your system
 - Internet connection
-- AWS Account (required for AWS CLI configuration)
 
-## macOS Installation
-
-### Installing Terraform on macOS
+## macOS Installation <a name="macos"></a>
 
 1. Download the latest Terraform package from the [official Terraform website](https://developer.hashicorp.com/terraform/downloads)
 
@@ -54,72 +48,11 @@ Before you begin, ensure you have the following:
    terraform version
    ```
 
-**Note:** To uninstall Terraform (if needed), run:
-```bash
-rm -rf /usr/local/bin/terraform
-```
+## Windows Installation <a name="windows"></a>
 
-### Installing VS Code and Terraform Plugin
+### Manual Installation <a name="windows-manual"></a>
 
-1. Download and install [Microsoft Visual Studio Code](https://code.visualstudio.com/download)
-
-2. Open VS Code and install the [HashiCorp Terraform Plugin](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform) from the Extensions marketplace
-
-### Installing AWS CLI on macOS
-
-1. Download and install the AWS CLI package:
-   ```bash
-   curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
-   sudo installer -pkg AWSCLIV2.pkg -target /
-   ```
-
-2. Verify the installation:
-   ```bash
-   which aws
-   aws --version
-   ```
-
-**Note:** To uninstall AWS CLI (if needed), run:
-```bash
-sudo rm /usr/local/bin/aws
-sudo rm /usr/local/bin/aws_completer
-sudo rm -rf /usr/local/aws-cli
-```
-
-### Configuring AWS Credentials on macOS
-
-1. Generate security credentials from the AWS Management Console:
-   - Go to AWS Management Console → IAM → Users → "Your-Admin-User" → Security Credentials → Create Access Key
-
-2. Configure AWS credentials using the terminal:
-   ```bash
-   aws configure
-   ```
-
-3. Enter your credentials when prompted:
-   ```
-   AWS Access Key ID: [Enter your access key]
-   AWS Secret Access Key: [Enter your secret key]
-   Default region name: [Enter your preferred region, e.g., us-west-2]
-   Default output format: [Enter your preferred format, e.g., json]
-   ```
-
-4. Verify your configuration:
-   ```bash
-   aws s3 ls
-   cat $HOME/.aws/credentials
-   ```
-
-**Troubleshooting:** If you experience credentials errors, reset your AWS credentials with:
-```bash
-for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN ; do eval unset $var ; done
-```
-
-## Windows Installation
-
-### Installing Terraform on Windows
-
-1. Download the latest Terraform ZIP file for Windows from the [official Terraform website](https://developer.hashicorp.com/terraform/install#windows)
+1. Download the latest Terraform ZIP file for Windows from the [official Terraform website](https://developer.hashicorp.com/terraform/downloads)
 
 2. Create a new folder named "binaries" on your system
 
@@ -138,21 +71,17 @@ for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURIT
    terraform version
    ```
 
-### Installing Terraform using Chocolatey
+### Chocolatey Installation <a name="windows-chocolatey"></a>
 
-Alternatively, if you have Chocolatey package manager installed, you can install Terraform using:
+If you have Chocolatey package manager installed, you can install Terraform using:
 
 ```
 choco install terraform
 ```
 
-### Installing AWS CLI on Windows
+## Linux Installation <a name="linux"></a>
 
-Download and install the AWS CLI from the [official AWS CLI website](https://aws.amazon.com/cli/)
-
-## Linux Installation
-
-### Installing Terraform on Ubuntu
+### Ubuntu Installation <a name="linux-ubuntu"></a>
 
 ```bash
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
@@ -161,7 +90,7 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update && sudo apt-get install terraform
 ```
 
-### Installing Terraform on RHEL
+### RHEL Installation <a name="linux-rhel"></a>
 
 **Method 1: Using the binary**
 ```bash
@@ -179,20 +108,47 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashi
 sudo yum -y install terraform
 ```
 
-### Installing AWS CLI on Linux
+## Verifying Installation <a name="verify"></a>
+
+After installing Terraform, verify the installation by running:
 
 ```bash
-sudo yum update -y
-sudo yum install curl unzip wget -y  
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
+terraform version
 ```
 
-## Troubleshooting
+This command should display the version of Terraform that was installed.
 
-- If you encounter issues with AWS credentials, try resetting them using the command provided in the macOS section
+## Uninstalling Terraform <a name="uninstall"></a>
+
+### macOS
+```bash
+rm -rf /usr/local/bin/terraform
+```
+
+### Windows
+- Remove the terraform.exe file from your "binaries" folder
+- Or if installed with Chocolatey: `choco uninstall terraform`
+
+### Linux (Ubuntu)
+```bash
+sudo apt-get remove terraform
+```
+
+### Linux (RHEL)
+```bash
+sudo yum remove terraform
+```
+
+## Recommended Tools <a name="recommended-tools"></a>
+
+For a better development experience, we recommend installing:
+
+1. [Microsoft Visual Studio Code](https://code.visualstudio.com/download)
+
+2. [HashiCorp Terraform Plugin for VS Code](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
+
+## Troubleshooting <a name="troubleshooting"></a>
+
+- If you get a "command not found" error, ensure Terraform is in your PATH
 - For path-related issues, verify that the installation directories are correctly added to your system PATH
-- For the latest installation instructions, always refer to the official documentation:
-  - [Terraform Documentation](https://developer.hashicorp.com/terraform/downloads)
-  - [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- For the latest installation instructions, always refer to the [official Terraform documentation](https://developer.hashicorp.com/terraform/downloads)
