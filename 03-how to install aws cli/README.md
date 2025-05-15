@@ -1,6 +1,3 @@
-# README.md
-
-```markdown
 # Terraform & AWS CLI Installation Guide
 
 This README provides comprehensive instructions for installing and configuring Terraform and AWS CLI on different operating systems. It's designed to be easy to follow, especially for first-time users.
@@ -265,4 +262,3 @@ For more information:
 ---
 
 *This README was last updated: May 2025*
-```
